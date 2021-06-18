@@ -11,14 +11,14 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 
 // child components
 // @ts-ignore
-import AmountDisplay from "@/components/AmountDisplay/AmountDisplay.vue";
+import AmountDisplay from "../../AmountDisplay/AmountDisplay.vue";
 
 @Component({
   components: {
     AmountDisplay,
   },
 })
-export class GenericTableRow extends Vue {
+export class GenericTableRowMixin extends Vue {
   /**
    * Type of assets shown in the table
    * @type {any}

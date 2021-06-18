@@ -24,9 +24,9 @@
 </template>
 
 <script lang="ts">
-import { GenericTableRow } from "./GenericTableRow";
+import { GenericTableRowMixin } from "./GenericTableRowMixin";
 
-export default class GenericTableRowComponent extends GenericTableRow {}
+export default class GenericTableRow extends GenericTableRowMixin {}
 </script>
 
 <style scoped lang="less">

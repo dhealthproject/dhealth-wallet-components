@@ -10,19 +10,19 @@
 import { Component, Prop, Vue } from "vue-property-decorator";
 
 // internal dependencies
-import { TableAction } from "@/types/TableAction";
-import { TableField } from "@/types/TableField";
-import { TableService } from "@/services/TableService";
-import { TableSortingOptions } from "@/types/TableSortingOptions";
-import { SortingDirections } from "@/types/SortingDirections";
+import { TableAction } from "../../types/TableAction";
+import { TableField } from "../../types/TableField";
+import { TableService } from "../../services/TableService";
+import { TableSortingOptions } from "../../types/TableSortingOptions";
+import { SortingDirections } from "../../types/SortingDirections";
 
 // child components
 // @ts-ignore
-import GenericTableRow from "@/components/GenericTableDisplay/GenericTableRow/GenericTableRow.vue";
+import GenericTableRow from "./GenericTableRow/GenericTableRow.vue";
 // @ts-ignore
-import IconButton from "@/components/IconButton/IconButton";
+import IconButton from "../IconButton/IconButton";
 // @ts-ignore
-import ButtonRefresh from "@/components/ButtonRefresh/ButtonRefresh";
+import ButtonRefresh from "../ButtonRefresh/ButtonRefresh";
 
 @Component({
   components: {
@@ -31,7 +31,7 @@ import ButtonRefresh from "@/components/ButtonRefresh/ButtonRefresh";
     ButtonRefresh,
   },
 })
-export class GenericTableDisplay extends Vue {
+export class GenericTableDisplayMixin extends Vue {
   /**
    * Pagination page size
    * @type {number}

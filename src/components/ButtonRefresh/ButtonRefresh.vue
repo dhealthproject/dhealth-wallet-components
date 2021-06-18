@@ -4,8 +4,8 @@
   </Tooltip>
 </template>
 <script lang="ts">
-import { ButtonRefresh } from "./ButtonRefresh";
-export default class ButtonRefreshComponent extends ButtonRefresh {}
+import { ButtonRefreshMixin } from "./ButtonRefreshMixin";
+export default class ButtonRefresh extends ButtonRefreshMixin {}
 </script>
 <style lang="less" scoped>
 @import "./ButtonRefresh.less";

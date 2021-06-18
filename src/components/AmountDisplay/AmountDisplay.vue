@@ -9,9 +9,9 @@
 </template>
 
 <script lang="ts">
-import { AmountDisplay } from "./AmountDisplay";
+import { AmountDisplayMixin } from "./AmountDisplayMixin";
 
-export default class AmountDisplayComponent extends AmountDisplay {}
+export default class AmountDisplay extends AmountDisplayMixin {}
 </script>
 
 <style lang="less" scoped>

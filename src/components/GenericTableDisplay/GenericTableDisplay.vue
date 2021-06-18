@@ -101,8 +101,8 @@
 </template>
 
 <script lang="ts">
-import { GenericTableDisplay } from "./GenericTableDisplay";
-export default class GenericTableDisplayComponent extends GenericTableDisplay {}
+import { GenericTableDisplayMixin } from "./GenericTableDisplayMixin";
+export default class GenericTableDisplay extends GenericTableDisplayMixin {}
 </script>
 <style lang="less" scoped>
 @import "./GenericTableDisplay.less";

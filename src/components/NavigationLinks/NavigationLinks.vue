@@ -31,8 +31,8 @@
   </div>
 </template>
 <script lang="ts">
-import { NavigationLinks } from "./NavigationLinks";
-export default class NavigationLinksComponent extends NavigationLinks {}
+import { NavigationLinksMixin } from "./NavigationLinksMixin";
+export default class NavigationLinks extends NavigationLinksMixin {}
 </script>
 
 <style lang="less" scoped>

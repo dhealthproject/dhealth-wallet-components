@@ -9,9 +9,10 @@
 import { Vue, Component, Prop } from "vue-property-decorator";
 
 @Component({})
-export class NavigationLinks extends Vue {
-  @Prop({ default: () => [] }) items: string[];
-  @Prop({ default: 0 }) currentItemIndex: number;
-  @Prop({ default: "vertical" }) direction: string;
-  @Prop({ default: "settings_tab_" }) translationPrefix: string;
+export class ButtonRefreshMixin extends Vue {
+  /**
+   * Whether data is still loading
+   * @type {boolean}
+   */
+  @Prop({ default: "Refresh" }) public tooltip: string;
 }

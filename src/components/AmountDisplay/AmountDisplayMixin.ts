@@ -10,7 +10,7 @@
 import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component({})
-export class AmountDisplay extends Vue {
+export class AmountDisplayMixin extends Vue {
   @Prop({ default: 0 }) value: number;
 
   @Prop({ default: undefined }) decimals: number | undefined;
