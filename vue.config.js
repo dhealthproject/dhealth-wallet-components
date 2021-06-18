@@ -19,5 +19,7 @@ module.exports = {
         }
     },
     // Enables templates in .vue files
-    runtimeCompiler: true
+    runtimeCompiler: true,
+    // Keep filenames untouched during build
+    filenameHashing: false
 }

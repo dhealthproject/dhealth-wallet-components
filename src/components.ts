@@ -19,17 +19,11 @@ export { TableService } from "./services/TableService";
 /// end-region services
 
 /// region components
-// @ts-ignore
 import ButtonRefresh from "./components/ButtonRefresh/ButtonRefresh.vue";
-// @ts-ignore
 import IconButton from "./components/IconButton/IconButton.vue";
-// @ts-ignore
 import AmountDisplay from "./components/AmountDisplay/AmountDisplay.vue";
-// @ts-ignore
 import NavigationLinks from "./components/NavigationLinks/NavigationLinks.vue";
-// @ts-ignore
 import GenericTableDisplay from "./components/GenericTableDisplay/GenericTableDisplay.vue";
-// @ts-ignore
 import GenericTableRow from "./components/GenericTableDisplay/GenericTableRow/GenericTableRow.vue";
 
 const components: { [s: string]: VueConstructor } = {

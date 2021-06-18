@@ -6,7 +6,7 @@
  * @author      Grégory Saive for Using Blockchain Ltd <greg@ubc.digital>
  * @license     LGPL-3.0
  */
-declare module '*.vue' {
-  import Vue from 'vue';
+declare module "*.vue" {
+  import Vue from "vue";
   export default Vue;
 }
