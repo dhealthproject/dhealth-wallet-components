@@ -12,4 +12,4 @@
  * @export
  * @type {FilteringTypes}
  */
-export type FilteringTypes = "show" | "hide"
+export type FilteringTypes = "show" | "hide";

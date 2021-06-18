@@ -6,7 +6,7 @@
  * @author      Grégory Saive for Using Blockchain Ltd <greg@ubc.digital>
  * @license     LGPL-3.0
  */
-import { FilteringTypes } from './FilteringTypes'
+import { FilteringTypes } from "./FilteringTypes";
 
 /**
  * Filtering options
@@ -16,4 +16,4 @@ import { FilteringTypes } from './FilteringTypes'
 export type TableFilteringOptions = {
   fieldName: string;
   filteringType: FilteringTypes;
-}
+};

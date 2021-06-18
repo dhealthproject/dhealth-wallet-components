@@ -6,9 +6,9 @@
  * @author      Grégory Saive for Using Blockchain Ltd <greg@ubc.digital>
  * @license     LGPL-3.0
  */
-import { TableField } from '../types/TableField'
-import { TableFilteringOptions } from '../types/TableFilteringOptions'
-import { TableSortingOptions } from '../types/TableSortingOptions'
+import { TableField } from "../types/TableField";
+import { TableFilteringOptions } from "../types/TableFilteringOptions";
+import { TableSortingOptions } from "../types/TableSortingOptions";
 
 /**
  * Table actions

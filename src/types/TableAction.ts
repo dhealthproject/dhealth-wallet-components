@@ -16,4 +16,4 @@ export type TableAction = {
   id: string;
   label: string;
   icon: string;
-}
+};

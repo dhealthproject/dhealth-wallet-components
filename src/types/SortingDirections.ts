@@ -11,4 +11,4 @@
  * @export
  * @type {SortingDirections}
  */
-export type SortingDirections = "asc" | "desc"
+export type SortingDirections = "asc" | "desc";

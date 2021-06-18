@@ -6,7 +6,7 @@
  * @author      Grégory Saive for Using Blockchain Ltd <greg@ubc.digital>
  * @license     LGPL-3.0
  */
-import { SortingDirections } from './SortingDirections'
+import { SortingDirections } from "./SortingDirections";
 
 /**
  * Sorting options
@@ -16,4 +16,4 @@ import { SortingDirections } from './SortingDirections'
 export type TableSortingOptions = {
   fieldName: string;
   direction: SortingDirections;
-}
+};
