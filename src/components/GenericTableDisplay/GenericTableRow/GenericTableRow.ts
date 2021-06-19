@@ -18,7 +18,7 @@ import AmountDisplay from "../../AmountDisplay/AmountDisplay.vue";
     AmountDisplay,
   },
 })
-export class GenericTableRowMixin extends Vue {
+export default class GenericTableRow extends Vue {
   /**
    * Type of assets shown in the table
    * @type {any}

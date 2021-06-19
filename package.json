@@ -2,7 +2,7 @@
   "name": "@yourdlt/wallet-components",
   "description": "YourDLT Wallet Components: Components Library for Plugins Development.",
   "homepage": "https://github.com/UsingBlockchain/yourdlt-wallet-components#readme",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "author": {
     "name": "Using Blockchain Ltd",
     "email": "info@ubc.digital",
@@ -13,8 +13,8 @@
     "url": "https://github.com/UsingBlockchain/yourdlt-wallet-components.git"
   },
   "license": "LGPL-3.0-only",
-  "main": "dist/YourDLTWalletComponents.umd.js",
-  "types": "dist/components.d.ts",
+  "main": "dist/@yourdlt/wallet-components.umd.js",
+  "types": "dist/@yourdlt/components.d.ts",
   "files": [
     "dist/*",
     "README.md",
@@ -22,11 +22,9 @@
   ],
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "npm run build:lib && npm run build:ts && npm run copy:vue && npm run copy:shim",
-    "build:lib": "vue-cli-service build --target lib --name YourDLTWalletComponents src/components.ts",
+    "build": "npm run build:lib && npm run build:ts",
+    "build:lib": "vue-cli-service build --target lib --name @yourdlt/wallet-components src/components.ts",
     "build:ts": "tsc --emitDeclarationOnly",
-    "copy:vue": "cpy '**/*.vue' '../dist/' --cwd=src --parents",
-    "copy:shim": "cpy 'shims-*.d.ts' '../dist/' --cwd=src",
     "test:unit": "vue-cli-service test:unit",
     "lint": "npm run prettier && npm run eslint",
     "lint:fix": "npm run prettier:fix && npm run eslint:fix",

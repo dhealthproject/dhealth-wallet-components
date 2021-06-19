@@ -8,11 +8,7 @@
   </span>
 </template>
 
-<script lang="ts">
-import { AmountDisplayMixin } from "./AmountDisplayMixin";
-
-export default class AmountDisplay extends AmountDisplayMixin {}
-</script>
+<script lang="ts" src="./AmountDisplay.ts"></script>
 
 <style lang="less" scoped>
 .amount-display-container {

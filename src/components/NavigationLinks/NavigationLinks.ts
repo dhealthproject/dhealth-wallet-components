@@ -9,7 +9,7 @@
 import { Vue, Component, Prop } from "vue-property-decorator";
 
 @Component({})
-export class NavigationLinksMixin extends Vue {
+export default class NavigationLinks extends Vue {
   @Prop({ default: () => [] }) items: string[];
   @Prop({ default: 0 }) currentItemIndex: number;
   @Prop({ default: "vertical" }) direction: string;

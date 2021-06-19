@@ -30,10 +30,7 @@
     </div>
   </div>
 </template>
-<script lang="ts">
-import { NavigationLinksMixin } from "./NavigationLinksMixin";
-export default class NavigationLinks extends NavigationLinksMixin {}
-</script>
+<script lang="ts" src="./NavigationLinks.ts"></script>
 
 <style lang="less" scoped>
 @import "./NavigationLinks.less";

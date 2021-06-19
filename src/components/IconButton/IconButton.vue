@@ -10,20 +10,7 @@
   </button>
 </template>
 
-<script lang="ts">
-import { Component, Vue, Prop } from "vue-property-decorator";
-
-@Component({})
-export default class IconButton extends Vue {
-  @Prop({ default: false }) disabled: boolean;
-  @Prop({ default: undefined }) title: boolean;
-  /**
-   * @link https://github.com/view-design/ViewUI/blob/master/examples/routers/icon.vue#L11
-   **/
-  @Prop({ default: "md-add-circle" }) icon: string;
-  @Prop({ default: undefined }) size: string;
-}
-</script>
+<script lang="ts" src="./IconButton.ts"></script>
 
 <style lang="less" scoped>
 @import "./IconButton.less";

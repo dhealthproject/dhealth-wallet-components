@@ -23,11 +23,7 @@
   </div>
 </template>
 
-<script lang="ts">
-import { GenericTableRowMixin } from "./GenericTableRowMixin";
-
-export default class GenericTableRow extends GenericTableRowMixin {}
-</script>
+<script lang="ts" src="./GenericTableRow.ts"></script>
 
 <style scoped lang="less">
 /* @TODO GenericTableDisplay.less shouldn't be imported here*/

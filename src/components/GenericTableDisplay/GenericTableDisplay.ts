@@ -31,7 +31,7 @@ import ButtonRefresh from "../ButtonRefresh/ButtonRefresh";
     ButtonRefresh,
   },
 })
-export class GenericTableDisplayMixin extends Vue {
+export default class GenericTableDisplay extends Vue {
   /**
    * Pagination page size
    * @type {number}

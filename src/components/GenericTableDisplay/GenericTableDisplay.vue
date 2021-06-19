@@ -100,10 +100,8 @@
   </div>
 </template>
 
-<script lang="ts">
-import { GenericTableDisplayMixin } from "./GenericTableDisplayMixin";
-export default class GenericTableDisplay extends GenericTableDisplayMixin {}
-</script>
+<script lang="ts" src="./GenericTableDisplay.ts"></script>
+
 <style lang="less" scoped>
 @import "./GenericTableDisplay.less";
 </style>

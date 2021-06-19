@@ -9,7 +9,7 @@
 import { Vue, Component, Prop } from "vue-property-decorator";
 
 @Component({})
-export class ButtonRefreshMixin extends Vue {
+export default class ButtonRefresh extends Vue {
   /**
    * Whether data is still loading
    * @type {boolean}
