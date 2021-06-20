@@ -25,7 +25,7 @@
         ]"
         @click="$emit('selected', index)"
       >
-        {{ $t(translationPrefix + item.toLowerCase()) }}
+        {{ item }}
       </span>
     </div>
   </div>

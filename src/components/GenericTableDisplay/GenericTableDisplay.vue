@@ -22,7 +22,7 @@
               class="align-right"
               size="18"
               :icon="icon"
-              :title="$t(`table_action_name_${name}`)"
+              :title="label"
               @click="$emit('on-clicked-action', id)"
             />
           </div>
@@ -40,7 +40,7 @@
         :class="['table-header-item', `${name}-header`]"
         @click="setSortedBy(name)"
       >
-        <span>{{ $t(label) }}</span>
+        <span>{{ label }}</span>
         <Icon
           v-if="sortedBy.fieldName === name"
           class="sort-icon"

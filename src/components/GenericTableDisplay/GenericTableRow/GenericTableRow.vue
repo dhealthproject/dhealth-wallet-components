@@ -10,7 +10,7 @@
       </div>
       <div v-else-if="isLinkField(name)">
         <a class="trigger-link pointer" :href="value" target="_blank">
-          <span>{{ $t("plugins_open_website") }}</span>
+          <span>{{ name }}</span>
         </a>
       </div>
       <div v-else>{{ value }}</div>
