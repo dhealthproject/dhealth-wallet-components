@@ -46,10 +46,13 @@ import FormRow from "./components/FormRow/FormRow.vue";
 import FormTitle from "./components/FormTitle/FormTitle.vue";
 // @ts-ignore
 import FormWrapper from "./components/FormWrapper/FormWrapper.vue";
+// @ts-ignore
+import ErrorTooltip from "./components/ErrorTooltip/ErrorTooltip.vue";
 
 const components: { [s: string]: VueConstructor } = {
   AmountDisplay,
   ButtonRefresh,
+  ErrorTooltip,
   FormLabel,
   FormRow,
   FormTitle,
@@ -68,6 +71,7 @@ export const registerComponents = (): { [s: string]: VueConstructor } => {
 export {
   AmountDisplay,
   ButtonRefresh,
+  ErrorTooltip,
   FormLabel,
   FormRow,
   FormTitle,
