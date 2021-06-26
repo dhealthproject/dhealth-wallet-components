@@ -1,7 +1,10 @@
 <template>
   <button
     type="button"
-    class="icon-button button-style entered-button submit-button inverted-button normal"
+    :class="{
+      'icon-button button-style entered-button inverted-button normal': true,
+      'submit-button': !!title,
+    }"
     :disabled="disabled"
     @click="$emit('click')"
   >

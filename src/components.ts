@@ -9,9 +9,9 @@
 import Vue, { VueConstructor } from "vue";
 
 /// region setup Vue
-import iView from 'view-design';
-import locale from 'view-design/dist/locale/en-US';
-import 'view-design/dist/styles/iview.css';
+import iView from "view-design";
+import locale from "view-design/dist/locale/en-US";
+import "view-design/dist/styles/iview.css";
 Vue.use(iView, { locale });
 /// end-region setup Vue
 

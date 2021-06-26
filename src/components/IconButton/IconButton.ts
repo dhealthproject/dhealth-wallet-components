@@ -12,7 +12,7 @@ import { Component, Vue, Prop } from "vue-property-decorator";
 @Component({})
 export default class IconButton extends Vue {
   @Prop({ default: false }) disabled: boolean;
-  @Prop({ default: undefined }) title: boolean;
+  @Prop({ default: undefined }) title: string;
   /**
    * @link https://github.com/view-design/ViewUI/blob/master/examples/routers/icon.vue#L11
    **/
