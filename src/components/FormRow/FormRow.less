@@ -1,0 +1,45 @@
+/**
+ * This file is part of YourDLT Wallet Components shared under LGPL-3.0
+ * Copyright (C) 2021 Using Blockchain Ltd, Reg No.: 12658136, United Kingdom
+ *
+ * @package     YourDLT Wallet Components
+ * @author      Grégory Saive for Using Blockchain Ltd <greg@ubc.digital>
+ * @license     LGPL-3.0
+ */
+@import "../theme.less";
+
+.form-row {
+  width: auto;
+
+  .form-row-inner-container {
+    align-items: initial;
+
+    &.form-row-vertical {
+      .label-container {
+        .form-label-container {
+          padding: 0.08rem 0;
+          .form-label {
+            color: yellow;
+            padding-left: 0 !important;
+          }
+        }
+      }
+      .inputs-container {
+        .inputs-create-container {
+          margin: 0 0.7rem;
+          width: 92%;
+
+          .select-style {
+            padding-right: 0.08rem;
+          }
+        }
+      }
+    }
+  }
+
+  .flex-container {
+    display: flex;
+    justify-content: initial;
+    float: right;
+  }
+}

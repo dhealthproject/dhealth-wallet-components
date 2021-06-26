@@ -38,10 +38,22 @@ import NavigationLinks from "./components/NavigationLinks/NavigationLinks.vue";
 import GenericTableDisplay from "./components/GenericTableDisplay/GenericTableDisplay.vue";
 // @ts-ignore
 import GenericTableRow from "./components/GenericTableDisplay/GenericTableRow/GenericTableRow.vue";
+// @ts-ignore
+import FormLabel from "./components/FormLabel/FormLabel.vue";
+// @ts-ignore
+import FormRow from "./components/FormRow/FormRow.vue";
+// @ts-ignore
+import FormTitle from "./components/FormTitle/FormTitle.vue";
+// @ts-ignore
+import FormWrapper from "./components/FormWrapper/FormWrapper.vue";
 
 const components: { [s: string]: VueConstructor } = {
   AmountDisplay,
   ButtonRefresh,
+  FormLabel,
+  FormRow,
+  FormTitle,
+  FormWrapper,
   GenericTableDisplay,
   GenericTableRow,
   IconButton,
@@ -56,6 +68,10 @@ export const registerComponents = (): { [s: string]: VueConstructor } => {
 export {
   AmountDisplay,
   ButtonRefresh,
+  FormLabel,
+  FormRow,
+  FormTitle,
+  FormWrapper,
   GenericTableDisplay,
   GenericTableRow,
   IconButton,

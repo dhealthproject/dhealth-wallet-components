@@ -9,13 +9,20 @@
  */
 -->
 <template>
-  <Tooltip :content="tooltip" placement="top" :transfer="true">
-    <Icon type="md-refresh" class="button-refresh" @click="$emit('click')" />
-  </Tooltip>
+  <div class="form-title-container">
+    <span class="form-title">
+      <slot />
+    </span>
+  </div>
 </template>
 
-<script lang="ts" src="./ButtonRefresh.ts"></script>
+<script lang="ts">
+import { Component, Vue } from "vue-property-decorator";
+
+@Component
+export default class FormTitle extends Vue {}
+</script>
 
 <style lang="less" scoped>
-@import "./ButtonRefresh.less";
+@import "./FormTitle.less";
 </style>
