@@ -1,20 +1,20 @@
 {
-  "name": "@yourdlt/wallet-components",
-  "description": "YourDLT Wallet Components: Components Library for Plugins Development.",
-  "homepage": "https://github.com/UsingBlockchain/yourdlt-wallet-components#readme",
-  "version": "0.3.1",
+  "name": "@dhealth/wallet-components",
+  "description": "dHealth Wallet Components: Components Library for Plugins Development.",
+  "homepage": "https://github.com/dhealthproject/dhealth-wallet-components#readme",
+  "version": "1.1.1",
   "author": {
-    "name": "Using Blockchain Ltd",
-    "email": "info@ubc.digital",
-    "url": "https://using-blockchain.org"
+    "name": "dHealth Network",
+    "email": "greg@dhealth.foundation",
+    "url": "https://dhealth.network"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/UsingBlockchain/yourdlt-wallet-components.git"
+    "url": "https://github.com/dhealthproject/dhealth-wallet-components.git"
   },
   "license": "LGPL-3.0-only",
-  "main": "dist/@yourdlt/wallet-components.umd.js",
-  "types": "dist/@yourdlt/src/components.d.ts",
+  "main": "dist/@dhealth/wallet-components.umd.js",
+  "types": "dist/@dhealth/src/components.d.ts",
   "files": [
     "dist/*",
     "README.md",
@@ -23,7 +23,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "npm run build:lib && npm run build:ts",
-    "build:lib": "vue-cli-service build --target lib --name @yourdlt/wallet-components src/components.ts",
+    "build:lib": "vue-cli-service build --target lib --name @dhealth/wallet-components src/components.ts",
     "build:ts": "tsc --emitDeclarationOnly",
     "pretest": "npm run build",
     "test": "vue-cli-service test:unit",
@@ -35,7 +35,7 @@
     "prettier:fix": "prettier --write ./src"
   },
   "dependencies": {
-    "@yourdlt/wallet-api-bridge": "latest",
+    "@dhealth/wallet-api-bridge": "latest",
     "vue": "^2.6.10",
     "vue-property-decorator": "^8.1.0",
     "view-design": "^4.5.0",

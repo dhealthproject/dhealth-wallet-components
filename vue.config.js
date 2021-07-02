@@ -11,7 +11,7 @@
 const path = require('path')
 
 module.exports = {
-    assetsDir: '\@yourdlt',
+    assetsDir: '\@dhealth',
     // Disables extract of CSS files
     css: {extract: false},
     // Disables module splitting
@@ -22,10 +22,10 @@ module.exports = {
         // iView fix for fonts
         module: {
             rules: [
-                { test: /\.eot(\?.*)?$/, loader: 'url-loader?limit=10240&mimetype=application/vnd.ms-fontobject&name=' + path.join('\@yourdlt', 'fonts/[name].[hash:7].[ext]') },
-                { test: /\.woff2(\?.*)?$/, loader: 'url-loader?limit=10240&mimetype=application/font-woff2&name=' + path.join('\@yourdlt', 'fonts/[name].[hash:7].[ext]') },
-                { test: /\.woff(\?.*)?$/, loader: 'url-loader?limit=10240&mimetype=application/font-woff&name=' + path.join('\@yourdlt', 'fonts/[name].[hash:7].[ext]') },
-                { test: /\.ttf(\?.*)?$/, loader: 'url-loader?limit=10240&mimetype=application/font-ttf&name=' + path.join('\@yourdlt', 'fonts/[name].[hash:7].[ext]') }
+                { test: /\.eot(\?.*)?$/, loader: 'url-loader?limit=10240&mimetype=application/vnd.ms-fontobject&name=' + path.join('\@dhealth', 'fonts/[name].[hash:7].[ext]') },
+                { test: /\.woff2(\?.*)?$/, loader: 'url-loader?limit=10240&mimetype=application/font-woff2&name=' + path.join('\@dhealth', 'fonts/[name].[hash:7].[ext]') },
+                { test: /\.woff(\?.*)?$/, loader: 'url-loader?limit=10240&mimetype=application/font-woff&name=' + path.join('\@dhealth', 'fonts/[name].[hash:7].[ext]') },
+                { test: /\.ttf(\?.*)?$/, loader: 'url-loader?limit=10240&mimetype=application/font-ttf&name=' + path.join('\@dhealth', 'fonts/[name].[hash:7].[ext]') }
             ]
         }
     },
