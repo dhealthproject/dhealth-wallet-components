@@ -2,7 +2,7 @@
   "name": "@yourdlt/wallet-components",
   "description": "YourDLT Wallet Components: Components Library for Plugins Development.",
   "homepage": "https://github.com/UsingBlockchain/yourdlt-wallet-components#readme",
-  "version": "0.1.18",
+  "version": "0.2.0",
   "author": {
     "name": "Using Blockchain Ltd",
     "email": "info@ubc.digital",
@@ -25,7 +25,8 @@
     "build": "npm run build:lib && npm run build:ts",
     "build:lib": "vue-cli-service build --target lib --name @yourdlt/wallet-components src/components.ts",
     "build:ts": "tsc --emitDeclarationOnly",
-    "test:unit": "vue-cli-service test:unit",
+    "pretest": "npm run build",
+    "test": "vue-cli-service test:unit",
     "lint": "npm run prettier && npm run eslint",
     "lint:fix": "npm run prettier:fix && npm run eslint:fix",
     "eslint": "eslint src/ --ext .ts && eslint src/ --ext .vue",
@@ -37,11 +38,14 @@
     "@yourdlt/wallet-api-bridge": "latest",
     "vue": "^2.6.10",
     "vue-property-decorator": "^8.1.0",
-    "view-design": "^4.5.0"
+    "view-design": "^4.5.0",
+    "symbol-qr-library": "^0.14.0",
+    "vue-infinite-scroll": "^2.0.2"
   },
   "devDependencies": {
     "@babel/compat-data": "^7.14.0",
     "@babel/core": "^7.14.2",
+    "@types/jest": "^23.3.1",
     "@typescript-eslint/eslint-plugin": "^2.15.0",
     "@typescript-eslint/parser": "^2.15.0",
     "@vue/cli-plugin-babel": "^4.5.13",
@@ -51,6 +55,7 @@
     "@vue/eslint-config-typescript": "^5.0.1",
     "@vue/test-utils": "^1.2.0",
     "babel-core": "7.0.0-bridge.0",
+    "babel-jest": "^25.2.6",
     "babel-helper-vue-jsx-merge-props": "^2.0.3",
     "babel-plugin-syntax-jsx": "^6.18.0",
     "babel-plugin-transform-runtime": "^6.22.0",
@@ -62,13 +67,20 @@
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-vue": "^6.1.2",
+    "flush-promises": "^1.0.2",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^25.2.6",
+    "jest-transform-stub": "^2.0.0",
     "less": "^3.0.4",
     "less-loader": "^4.1.0",
     "prettier": "2.0.5",
     "rimraf": "^3.0.2",
     "semver": "^5.3.0",
     "typescript": "^3.9.9",
-    "vue-template-compiler": "^2.5.2",
-    "vue-class-component": "^7.2.3"
+    "ts-jest": "^25.3.0",
+    "ts-mockito": "^2.6.1",
+    "vue-class-component": "^7.2.3",
+    "vue-jest": "^3.0.5",
+    "vue-template-compiler": "^2.5.2"
   }
 }

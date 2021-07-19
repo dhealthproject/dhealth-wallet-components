@@ -20,13 +20,13 @@ export default class AmountDisplay extends Vue {
   @Prop({ default: "" }) ticker: string;
 
   /// region computed properties getter/setter
-  get integerPart(): string {
+  public get integerPart(): string {
     return this.value >= 0
       ? Math.floor(this.value).toLocaleString()
       : "-" + Math.floor(this.value * -1).toLocaleString();
   }
 
-  get fractionalPart(): string {
+  public get fractionalPart(): string {
     const absoluteValue = Math.abs(this.value);
     const rest = absoluteValue - Math.floor(absoluteValue);
     const decimals = this.decimals === undefined ? 6 : this.decimals;

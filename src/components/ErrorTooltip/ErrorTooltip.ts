@@ -7,8 +7,13 @@
  * @license     LGPL-3.0
  */
 import { Component, Vue, Prop, Watch } from "vue-property-decorator";
+import { Tooltip } from "view-design";
 
-@Component
+@Component({
+  components: {
+    Tooltip,
+  }
+})
 export default class ErrorTooltip extends Vue {
   /**
    * Tooltip placement

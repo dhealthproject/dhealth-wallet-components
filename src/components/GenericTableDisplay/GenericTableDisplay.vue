@@ -52,10 +52,10 @@
       >
         <span>{{ label }}</span>
         <Icon
-          v-if="sortedBy.fieldName === name"
+          v-if="sortingOptions.fieldName === name"
           class="sort-icon"
           :type="
-            sortedBy.direction === 'asc'
+            sortingOptions.direction === 'asc'
               ? 'md-arrow-dropup'
               : 'md-arrow-dropdown'
           "
@@ -74,32 +74,43 @@
         infinite-scroll-distance="5"
         class="table-rows-outer-container"
       >
-        <div class="table-rows-container">
-          <GenericTableRow
-            v-for="(rowValues, index) in currentPageRows"
-            :key="index"
-            :row-values="rowValues"
-            @on-remove="$emit('on-remove', rowValues)"
-            @click="$emit('on-clicked-row', index)"
-          />
+        <div
+          class="table-rows-container"
+          :class="{
+            'without-grid': !!this.disableRowsGrid,
+          }"
+        >
+          <slot name="rows" :items="currentPageRows">
+            <GenericTableRow
+              v-for="(rowValues, index) in items"
+              :key="index"
+              :row-values="rowValues"
+              @on-remove="$emit('on-remove', rowValues)"
+              @click="$emit('on-clicked-row', index)"
+            />
+          </slot>
         </div>
       </div>
       <div
         v-if="!isLoading && (!displayedValues || displayedValues.length === 0)"
         class="no-data-outer-container"
       >
-        <div class="no-data-inner-container">
-          <div v-for="item in emptyColumns" :key="item">
-            &nbsp;
-          </div>
+        <div
+          class="no-data-inner-container"
+          :class="{
+            'without-grid': !!this.disablePlaceholderGrid,
+          }"
+        >
+          <slot name="empty" :items="emptyColumns">
+            <div v-for="item in items" :key="item">
+              &nbsp;
+            </div>
+          </slot>
         </div>
       </div>
     </div>
 
-    <div
-      v-if="!disableSinglePageLinks || displayedValues.length / pageSize > 1"
-      class="table-footer-container"
-    >
+    <div v-if="isPageable" class="table-footer-container">
       <Page
         class="page"
         :total="displayedValues.length"

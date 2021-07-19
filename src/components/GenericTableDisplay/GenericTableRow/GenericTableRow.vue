@@ -23,6 +23,9 @@
           <span>{{ name }}</span>
         </a>
       </div>
+      <div v-else-if="isIconField(name)">
+        <Icon :type="value" size="22" />
+      </div>
       <div v-else>{{ value }}</div>
     </div>
     <div class="edit-icon-cell">

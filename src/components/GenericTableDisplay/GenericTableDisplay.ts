@@ -43,10 +43,12 @@ export default class GenericTableDisplay extends Vue {
    * @var {TableSortingOptions}
    */
   @Prop({
-    default: {
-      fieldName: undefined,
-      direction: undefined,
-    },
+    default() { 
+      return {
+        fieldName: 'name',
+        direction: 'asc',
+      };
+    }
   })
   public sortedBy: TableSortingOptions;
 
@@ -54,7 +56,7 @@ export default class GenericTableDisplay extends Vue {
    * Table action buttons.
    * @var {TableAction[]}
    */
-  @Prop({ default: [] }) public actionButtons: TableAction[];
+  @Prop({ default() { return []; } }) public actionButtons: TableAction[];
 
   /**
    * The *unfiltered* items that will be displayed (rows).
@@ -66,7 +68,7 @@ export default class GenericTableDisplay extends Vue {
    * The table fields (columns)
    * @type {string}
    */
-  @Prop({ default: [] }) public fields: TableField[];
+  @Prop({ default() { return []; } }) public fields: TableField[];
 
   /**
    * Whether data is still loading
@@ -93,19 +95,16 @@ export default class GenericTableDisplay extends Vue {
   @Prop({ default: false }) public disableSinglePageLinks: boolean;
 
   /**
-   * avoid multiple clicks
-   * @protected
-   * @param {string}
-   * @return {void}
+   * Whether the auto-rows grid is disabled.
+   * @type {boolean}
    */
-  protected isRefreshing: boolean = false;
+  @Prop({ default: false }) public disableRowsGrid: boolean;
 
   /**
-   * The current blockchain height
-   * @private
-   * @type {number}
+   * Whether the auto-rows grid is disabled for the placeholder.
+   * @type {boolean}
    */
-  private currentHeight: number;
+  @Prop({ default: false }) public disablePlaceholderGrid: boolean;
 
   /**
    * Pagination page number
@@ -119,6 +118,28 @@ export default class GenericTableDisplay extends Vue {
    * @type {number[]}
    */
   public emptyColumns = [...new Array(this.pageSize).keys()];
+
+  /**
+   * allow custom sorting options
+   * @protected
+   * @type {TableSortingOptions}
+   */
+  protected customSortedBy: TableSortingOptions;
+
+  /**
+   * avoid multiple clicks
+   * @protected
+   * @param {string}
+   * @return {void}
+   */
+  protected isRefreshing: boolean = false;
+
+  /**
+   * The current blockchain height
+   * @private
+   * @type {number}
+   */
+  private currentHeight: number;
 
   /// region getters and setters
   public get canRefresh(): boolean {
@@ -148,8 +169,8 @@ export default class GenericTableDisplay extends Vue {
    * @readonly
    * @return {TableRowValues[]}
    */
-  get displayedValues(): any[] {
-    return this.getService().sort(this.tableRows, this.sortedBy);
+  public get displayedValues(): any[] {
+    return this.getService().sort(this.tableRows, this.sortingOptions);
   }
 
   /**
@@ -157,7 +178,7 @@ export default class GenericTableDisplay extends Vue {
    * @readonly
    * @return {TableField[]}
    */
-  get tableFields(): TableField[] {
+  public get tableFields(): TableField[] {
     return this.getService().getTableFields();
   }
 
@@ -166,11 +187,28 @@ export default class GenericTableDisplay extends Vue {
    * @readonly
    * @return {TableRowValues[]}
    */
-  get currentPageRows(): any[] {
-    return this.displayedValues.slice(
-      (this.currentPage - 1) * this.pageSize,
-      this.currentPage * this.pageSize
+  public get currentPageRows(): any[] {
+    return this.displayedValues.length
+      ? this.displayedValues.slice(
+          (this.currentPage - 1) * this.pageSize,
+          this.currentPage * this.pageSize
+        )
+      : [];
+  }
+
+  public get isPageable(): boolean {
+    return (
+      !this.disableSinglePageLinks ||
+      this.displayedValues.length / this.pageSize > 1
     );
+  }
+
+  public get sortingOptions(): TableSortingOptions {
+    return !!this.customSortedBy ? this.customSortedBy : this.sortedBy;
+  }
+
+  public set sortingOptions(opt: TableSortingOptions) {
+    this.customSortedBy = opt;
   }
   /// end-region getters and setters
 
@@ -181,8 +219,6 @@ export default class GenericTableDisplay extends Vue {
   public async created(): Promise<void> {
     // refresh owned assets
     this.refresh();
-    // await this.refresh()
-    this.setDefaultSorting();
   }
 
   /**
@@ -206,32 +242,17 @@ export default class GenericTableDisplay extends Vue {
   }
 
   /**
-   * Sets the default sorting state and trigger it
-   */
-  public setDefaultSorting(): void {
-    const defaultSort = "asc";
-    const defaultField = "name";
-
-    Vue.set(this, "sortedBy", {
-      fieldName: defaultField,
-      direction: defaultSort,
-    });
-
-    this.setSortedBy(defaultField);
-  }
-
-  /**
    * Sorts the table data
    * @param {TableFieldNames} fieldName
    */
   public setSortedBy(fieldName: string): void {
-    const sortedBy = { ...this.sortedBy };
+    const sortedBy = { ...this.sortingOptions };
     const direction: SortingDirections =
       sortedBy.fieldName === fieldName && sortedBy.direction === "asc"
         ? "desc"
         : "asc";
 
-    Vue.set(this, "sortedBy", { fieldName, direction });
+    Vue.set(this, "sortingOptions", { fieldName, direction });
   }
 
   /**

@@ -9,10 +9,12 @@
 import Vue, { VueConstructor } from "vue";
 
 /// region setup Vue
+import infiniteScroll from 'vue-infinite-scroll';
 import iView from "view-design";
 import locale from "view-design/dist/locale/en-US";
 import "view-design/dist/styles/iview.css";
 Vue.use(iView, { locale });
+Vue.use(infiniteScroll);
 /// end-region setup Vue
 
 /// region services
@@ -48,6 +50,8 @@ import FormTitle from "./components/FormTitle/FormTitle.vue";
 import FormWrapper from "./components/FormWrapper/FormWrapper.vue";
 // @ts-ignore
 import ErrorTooltip from "./components/ErrorTooltip/ErrorTooltip.vue";
+// @ts-ignore
+import QRCode from "./components/QRCode/QRCode.vue";
 
 const components: { [s: string]: VueConstructor } = {
   AmountDisplay,
@@ -61,6 +65,7 @@ const components: { [s: string]: VueConstructor } = {
   GenericTableRow,
   IconButton,
   NavigationLinks,
+  QRCode,
 };
 
 export const registerComponents = (): { [s: string]: VueConstructor } => {
@@ -80,5 +85,6 @@ export {
   GenericTableRow,
   IconButton,
   NavigationLinks,
+  QRCode,
 };
 /// end-region components

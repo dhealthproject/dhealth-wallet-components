@@ -37,7 +37,7 @@ import FormLabel from "@/components/FormLabel/FormLabel.vue";
 
 @Component({ components: { FormLabel } })
 export default class FormRow extends Vue {
-  @Prop({ default: "" }) className: "emphasis";
+  @Prop({ default: "emphasis" }) className: string;
   @Prop({ default: false }) noLabel: boolean;
   @Prop({ default: false }) vertical: boolean;
 }

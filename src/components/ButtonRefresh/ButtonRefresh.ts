@@ -7,8 +7,14 @@
  * @license     LGPL-3.0
  */
 import { Vue, Component, Prop } from "vue-property-decorator";
+import { Icon, Tooltip } from "view-design";
 
-@Component({})
+@Component({
+  components: {
+    Icon,
+    Tooltip,
+  }
+})
 export default class ButtonRefresh extends Vue {
   /**
    * Whether data is still loading

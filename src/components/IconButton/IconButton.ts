@@ -8,8 +8,13 @@
  */
 // external dependencies
 import { Component, Vue, Prop } from "vue-property-decorator";
+import { Icon } from "view-design";
 
-@Component({})
+@Component({
+  components: {
+    Icon,
+  },
+})
 export default class IconButton extends Vue {
   @Prop({ default: false }) disabled: boolean;
   @Prop({ default: undefined }) title: string;

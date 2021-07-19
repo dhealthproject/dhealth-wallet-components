@@ -21,9 +21,14 @@ Following components are defined and exported with this library:
 | Class | Description |
 | --- | --- |
 | `AmountDisplay` | Mixin that displays a customizable mosaic amount. |
+| `ButtonRefresh` | Mixin that displays a refresh button using a font-awesome icon. |
+| `ErrorTooltip` | Mixin that displays a moveable tooltip. |
+| `FormLabel` | Mixin that displays a label container. |
+| `FormRow` | Mixing that wraps a form row with label (if necessary). |
 | `GenericTableDisplay` | Mixin that formalizes the display of lists and tabled data. |
+| `GenericTableRow` | Mixin that formalizes the display of rows in generic tables. |
 | `IconButton` | Mixin that displays a button with a font-awesome icon. |
-| `NavigationLinks` | Mixin that displays a button with a font-awesome icon. |
+| `NavigationLinks` | Mixin that displays list of navigation links horizontally or vertically. |
 
 ## Sponsor us
 

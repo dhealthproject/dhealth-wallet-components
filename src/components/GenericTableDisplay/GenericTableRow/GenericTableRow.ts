@@ -45,4 +45,8 @@ export default class GenericTableRow extends Vue {
   public isLinkField(field: string) {
     return ["homepage", "repository"].includes(field);
   }
+
+  public isIconField(field: string) {
+    return field.startsWith("icon-");
+  }
 }

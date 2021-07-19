@@ -97,15 +97,32 @@
         grid-template-columns: 100%;
         text-align: center;
       }
+      .table-rows-container.without-grid {
+        display: block;
+        grid-auto-rows: unset;
+        grid-template-columns: unset;
+      }
     }
 
     .no-data-inner-container {
       display: grid;
-      grid-auto-rows: 0.6rem;
+      grid-auto-rows: 0.3rem;
       grid-template-columns: 100%;
 
       > div {
         border-bottom: 1px solid @lineColor;
+      }
+    }
+
+    .no-data-inner-container.without-grid {
+      display: block;
+      grid-auto-rows: unset;
+      grid-template-columns: unset;
+      height: 100%;
+      width: 100%;
+
+      > div {
+        border-bottom: unset;
       }
     }
   }
