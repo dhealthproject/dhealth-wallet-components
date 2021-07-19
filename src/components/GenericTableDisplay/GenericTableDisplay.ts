@@ -43,12 +43,12 @@ export default class GenericTableDisplay extends Vue {
    * @var {TableSortingOptions}
    */
   @Prop({
-    default() { 
+    default() {
       return {
-        fieldName: 'name',
-        direction: 'asc',
+        fieldName: "name",
+        direction: "asc",
       };
-    }
+    },
   })
   public sortedBy: TableSortingOptions;
 
@@ -56,7 +56,12 @@ export default class GenericTableDisplay extends Vue {
    * Table action buttons.
    * @var {TableAction[]}
    */
-  @Prop({ default() { return []; } }) public actionButtons: TableAction[];
+  @Prop({
+    default() {
+      return [];
+    },
+  })
+  public actionButtons: TableAction[];
 
   /**
    * The *unfiltered* items that will be displayed (rows).
@@ -68,7 +73,12 @@ export default class GenericTableDisplay extends Vue {
    * The table fields (columns)
    * @type {string}
    */
-  @Prop({ default() { return []; } }) public fields: TableField[];
+  @Prop({
+    default() {
+      return [];
+    },
+  })
+  public fields: TableField[];
 
   /**
    * Whether data is still loading

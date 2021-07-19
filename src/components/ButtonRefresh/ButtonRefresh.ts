@@ -13,7 +13,7 @@ import { Icon, Tooltip } from "view-design";
   components: {
     Icon,
     Tooltip,
-  }
+  },
 })
 export default class ButtonRefresh extends Vue {
   /**

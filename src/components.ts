@@ -9,7 +9,7 @@
 import Vue, { VueConstructor } from "vue";
 
 /// region setup Vue
-import infiniteScroll from 'vue-infinite-scroll';
+import infiniteScroll from "vue-infinite-scroll";
 import iView from "view-design";
 import locale from "view-design/dist/locale/en-US";
 import "view-design/dist/styles/iview.css";

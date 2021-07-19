@@ -12,7 +12,7 @@ import { Tooltip } from "view-design";
 @Component({
   components: {
     Tooltip,
-  }
+  },
 })
 export default class ErrorTooltip extends Vue {
   /**
