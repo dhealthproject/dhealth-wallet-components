@@ -152,13 +152,19 @@ export default class GenericTableDisplay extends Vue {
   private currentHeight: number;
 
   /// region getters and setters
+  /**
+   * Flags whether the refresh button is available or not.
+   * @readonly
+   * @return {boolean}
+   */
   public get canRefresh(): boolean {
     return !!this.refreshGetter && !!this.refreshGetter.length;
   }
 
   /**
-   * Non-filtered table data
-   * @var {TableRowValues[]}
+   * Returns non-filtered table data
+   * @readonly
+   * @return {TableRowValues[]}
    */
   private get tableRows(): any[] {
     // first, check if we have direct "items"
@@ -175,7 +181,7 @@ export default class GenericTableDisplay extends Vue {
   }
 
   /**
-   * Values displayed in the table
+   * Returns values displayed in the table (filtered + sorted)
    * @readonly
    * @return {TableRowValues[]}
    */
@@ -184,7 +190,7 @@ export default class GenericTableDisplay extends Vue {
   }
 
   /**
-   * Header fields displayed in the table
+   * Returns header fields displayed in the table
    * @readonly
    * @return {TableField[]}
    */
@@ -193,7 +199,7 @@ export default class GenericTableDisplay extends Vue {
   }
 
   /**
-   * Get current page rows
+   * Returns current page rows
    * @readonly
    * @return {TableRowValues[]}
    */
@@ -206,6 +212,11 @@ export default class GenericTableDisplay extends Vue {
       : [];
   }
 
+  /**
+   * Flags whether the content has more than one page or not.
+   * @readonly
+   * @return {boolean}
+   */
   public get isPageable(): boolean {
     return (
       !this.disableSinglePageLinks ||
@@ -213,10 +224,23 @@ export default class GenericTableDisplay extends Vue {
     );
   }
 
+  /**
+   * Returns current sorting options: field name and direction.
+   * @return {TableSortingOptions}
+   */
   public get sortingOptions(): TableSortingOptions {
-    return !!this.customSortedBy ? this.customSortedBy : this.sortedBy;
+    if (this.customSortedBy === undefined) {
+      return this.sortedBy;
+    }
+
+    return this.customSortedBy;
   }
 
+  /**
+   * Sets current sorting options.
+   * @param   {TableSortingOptions}   opt
+   * @return  {void}
+   */
   public set sortingOptions(opt: TableSortingOptions) {
     this.customSortedBy = opt;
   }
@@ -273,6 +297,10 @@ export default class GenericTableDisplay extends Vue {
     this.currentPage = page;
   }
 
+  /**
+   * Handle refresh button click
+   * @return {void}
+   */
   protected async onRefresh() {
     if (this.isRefreshing || !this.canRefresh) {
       return;
