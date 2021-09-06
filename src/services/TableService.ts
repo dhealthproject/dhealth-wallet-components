@@ -28,8 +28,8 @@ export type TableAction = {
  */
 export class TableService {
   constructor(
-    protected readonly rows: any[],
-    protected readonly fields: TableField[]
+    protected readonly rows: any[] = [],
+    protected readonly fields: TableField[] = []
   ) {}
 
   /**
@@ -56,7 +56,10 @@ export class TableService {
    * @param {TableFilteringOptions} filterBy
    * @returns {TableRowValues[]}
    */
-  public filter(values: any[], filter: TableFilteringOptions): any[] {
+  public filter(
+    values: any[] = [],
+    filter: TableFilteringOptions = { fieldName: 'id', filteringType: 'show' },
+  ): any[] {
     if (filter.filteringType === "show") {
       return values;
     }
@@ -80,7 +83,10 @@ export class TableService {
    * @param {TableSortingOptions} sortBy
    * @returns {TableRowValues[]}
    */
-  public sort(valuesToSort: any[], options: TableSortingOptions): any[] {
+  public sort(
+    valuesToSort: any[] = [],
+    options: TableSortingOptions = { fieldName: 'id', direction: 'asc' },
+  ): any[] {
     const values = [...valuesToSort];
 
     function sortingMethodChooser(sortedValues) {
@@ -133,7 +139,7 @@ export class TableService {
           if (!b[options.fieldName] || !a[options.fieldName]) {
             return 1;
           }
-          return b[options.fieldName] - a[options.fieldName];
+          return a[options.fieldName] - b[options.fieldName];
         })
       );
     }

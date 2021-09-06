@@ -2,7 +2,7 @@
   "name": "@yourdlt/wallet-components",
   "description": "YourDLT Wallet Components: Components Library for Plugins Development.",
   "homepage": "https://github.com/UsingBlockchain/yourdlt-wallet-components#readme",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "author": {
     "name": "Using Blockchain Ltd",
     "email": "info@ubc.digital",

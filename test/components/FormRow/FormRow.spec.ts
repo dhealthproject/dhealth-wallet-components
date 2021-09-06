@@ -67,6 +67,6 @@ describe('components/FormRow --->', () => {
         wrapper.setProps({ noLabel: true });
         await Vue.nextTick();
 
-        expect(wrapper.find('.label-container')).toBeUndefined();
+        expect(wrapper.find('.label-container').exists()).toEqual(false);
     });
 });
