@@ -27,6 +27,7 @@ Following components are defined and exported with this library:
 | `GenericTableRow` | Mixin that formalizes the display of rows in generic tables. |
 | `IconButton` | Mixin that displays a button with a font-awesome icon. |
 | `NavigationLinks` | Mixin that displays list of navigation links horizontally or vertically. |
+| `NetworkNodeSelector` | Mixin that permits to input a node URL and checks for its information. |
 
 ## License
 

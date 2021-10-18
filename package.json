@@ -2,7 +2,7 @@
   "name": "@dhealth/wallet-components",
   "description": "dHealth Wallet Components: Components Library for Plugins Development.",
   "homepage": "https://github.com/dhealthproject/dhealth-wallet-components#readme",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "author": {
     "name": "dHealth Network",
     "email": "greg@dhealth.foundation",
@@ -40,7 +40,8 @@
     "vue-property-decorator": "^8.1.0",
     "view-design": "^4.5.0",
     "symbol-qr-library": "^0.14.0",
-    "vue-infinite-scroll": "^2.0.2"
+    "vue-infinite-scroll": "^2.0.2",
+    "axios": "^0.22.0"
   },
   "devDependencies": {
     "@babel/compat-data": "^7.14.0",

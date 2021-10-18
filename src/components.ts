@@ -1,8 +1,8 @@
 /**
- * This file is part of YourDLT Wallet Components shared under LGPL-3.0
+ * This file is part of dHealth Wallet Components shared under LGPL-3.0
  * Copyright (C) 2021 Using Blockchain Ltd, Reg No.: 12658136, United Kingdom
  *
- * @package     YourDLT Wallet Components
+ * @package     dHealth Wallet Components
  * @author      Grégory Saive for Using Blockchain Ltd <greg@ubc.digital>
  * @license     LGPL-3.0
  */
@@ -17,6 +17,10 @@ Vue.use(iView, { locale });
 Vue.use(infiniteScroll);
 /// end-region setup Vue
 
+/// region models
+export { NodeModel } from "./models/NodeModel";
+/// end-region models
+
 /// region services
 export { FilteringTypes } from "./types/FilteringTypes";
 export { SortingDirections } from "./types/SortingDirections";
@@ -25,6 +29,8 @@ export { TableField } from "./types/TableField";
 export { TableFilteringOptions } from "./types/TableFilteringOptions";
 export { TableSortingOptions } from "./types/TableSortingOptions";
 export { TableService } from "./services/TableService";
+export { NodeService } from "./services/NodeService";
+export { NetworkService } from "./services/NetworkService";
 /// end-region services
 
 /// region components
@@ -52,6 +58,8 @@ import FormWrapper from "./components/FormWrapper/FormWrapper.vue";
 import ErrorTooltip from "./components/ErrorTooltip/ErrorTooltip.vue";
 // @ts-ignore
 import QRCode from "./components/QRCode/QRCode.vue";
+// @ts-ignore
+import NetworkNodeSelector from "./components/NetworkNodeSelector/NetworkNodeSelector.vue";
 
 const components: { [s: string]: VueConstructor } = {
   AmountDisplay,
@@ -66,6 +74,7 @@ const components: { [s: string]: VueConstructor } = {
   IconButton,
   NavigationLinks,
   QRCode,
+  NetworkNodeSelector,
 };
 
 export const registerComponents = (): { [s: string]: VueConstructor } => {
@@ -86,5 +95,6 @@ export {
   IconButton,
   NavigationLinks,
   QRCode,
+  NetworkNodeSelector,
 };
 /// end-region components
