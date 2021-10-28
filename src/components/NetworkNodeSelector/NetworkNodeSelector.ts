@@ -7,30 +7,32 @@
  * @license     LGPL-3.0
  */
 // external dependencies
-import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
+import { Component, Vue, Prop } from 'vue-property-decorator';
+import { AutoComplete } from 'view-design';
+import { NodeInfoDTO, NodeInfoDTOFromJSON } from 'symbol-openapi-typescript-fetch-client';
 
 // internal dependencies
-import { NodeType } from '@/types/NodeType';
-import { NetworkIdentifier } from '@/types/NetworkIdentifier';
-import { NodeService } from '@/services/NodeService';
-import { NodeModel } from '@/models/NodeModel';
+import { 
+  getNodeTypes,
+  NetworkIdentifier,
+  NodeService,
+  NodeType,
+} from '@dhealth/wallet-api-bridge';
 
 // child components
-import { AutoComplete } from 'view-design';
-
 // @ts-ignore
 import FormWrapper from '@/components/FormWrapper/FormWrapper.vue';
 // @ts-ignore
 import FormRow from '@/components/FormRow/FormRow.vue';
 
 @Component({
-    components: {
-        AutoComplete,
-        FormWrapper,
-        FormRow,
-    },
+  components: {
+    AutoComplete,
+    FormWrapper,
+    FormRow,
+  },
 })
-export default class NetworkNodeSelectorTs extends Vue {
+export default class NetworkNodeSelector extends Vue {
   /**
    * Which node types should be included in results.
    * @var {NodeType}
@@ -39,9 +41,9 @@ export default class NetworkNodeSelectorTs extends Vue {
 
   /**
    * The currently selected node information.
-   * @var {NodeModel}
+   * @var {NodeInfoDTO}
    */
-  @Prop() value: NodeModel;
+  @Prop() value: NodeInfoDTO;
 
   /**
    * Whether the selector should be disabled.
@@ -63,9 +65,9 @@ export default class NetworkNodeSelectorTs extends Vue {
 
   /**
    * The list of known peers.
-   * @var {NodeModel[]}
+   * @var {NodeInfoDTO[]}
    */
-  protected peerNodes: NodeModel[];
+  protected peerNodes: NodeInfoDTO[];
 
   /**
    * The regular expression used to match domain names / IPs.
@@ -78,11 +80,14 @@ export default class NetworkNodeSelectorTs extends Vue {
    * @var {Object}
    */
   protected formItems = {
-      nodeUrl: '',
-      nodePublicKey: undefined,
-      networkIdentifier: NetworkIdentifier.MAIN_NET,
-      generationHash: 'ED5761EA890A096C50D3F50B7C2F0CCB4B84AFC9EA870F381E84DDE36D04EF16',
-      networkInfo: 'mainnet:dhealth.dhp',
+    host: '',
+    friendlyName: '',
+    publicKey: undefined,
+    nodePublicKey: undefined,
+    networkIdentifier: NetworkIdentifier.MAIN_NET,
+    networkGenerationHashSeed: 'ED5761EA890A096C50D3F50B7C2F0CCB4B84AFC9EA870F381E84DDE36D04EF16',
+    version: 0,
+    roles: 0
   };
 
   /**
@@ -108,8 +113,10 @@ export default class NetworkNodeSelectorTs extends Vue {
    * Get the list of nodes.
    * @returns {NodeModel[]}
    */
-  protected get filteredNodes(): NodeModel[] {
-    return !!this.peerNodes ? this.peerNodes : [];
+  protected get filteredNodes(): NodeInfoDTO[] {
+    return !!this.peerNodes ? this.peerNodes.filter(
+      p => getNodeTypes(p.roles).some(r => this.includeRoles.includes(r))
+    ) : [];
   }
 
   /**
@@ -126,7 +133,7 @@ export default class NetworkNodeSelectorTs extends Vue {
    */
   protected get nodeExistsInList(): boolean {
     return !!this.peerNodes && undefined !== this.peerNodes.find(
-      (p: NodeModel) => p.host === this.formItems.nodeUrl
+      (p: NodeInfoDTO) => p.host === this.formItems.host
     )
   }
   /// end-region getters and setters
@@ -143,7 +150,7 @@ export default class NetworkNodeSelectorTs extends Vue {
 
     try {
       // fetches basic details
-      await this.fetchNodeInformation(nodeUrl);
+      await this.onSelect(nodeUrl);
 
       // fetch peers neighborhood
       this.peerNodes = await this.nodeService.getNodePeers(nodeUrl);
@@ -172,15 +179,37 @@ export default class NetworkNodeSelectorTs extends Vue {
       const nodeInfo: any = await this.nodeService.getNodeInfo(value);
 
       // fills in necessary form items
-      this.formItems.nodeUrl = value;
+      this.formItems.host = value;
+      this.formItems.version = nodeInfo.version;
+      this.formItems.friendlyName = nodeInfo.friendlyName;
+      this.formItems.publicKey = nodeInfo.publicKey;
       this.formItems.nodePublicKey = nodeInfo.nodePublicKey;
-      this.formItems.generationHash = nodeInfo.networkGenerationHashSeed;
+      this.formItems.networkGenerationHashSeed = nodeInfo.networkGenerationHashSeed;
       this.formItems.networkIdentifier = parseInt(nodeInfo.networkIdentifier);
+      this.formItems.roles = nodeInfo.roles;
     }
     catch (e) {}
 
     // updates component state
     this.isFetchingNodeInfo = false;
+  }
+
+  /**
+   * Event handler for the input of a new node (during input).
+   *
+   * @param   {string}  value 
+   * @returns {void}
+   */
+  protected onChange(value) {
+    // validates host format
+    if (!this.urlValidator(value)) {
+      this.showPeersList = true;
+
+      // no HTTP request until we have a valid hostname
+      return ;
+    }
+
+    return this.onSelect(value);
   }
 
   /**
@@ -200,7 +229,8 @@ export default class NetworkNodeSelectorTs extends Vue {
     // requests node information using REST
     try {
       await this.fetchNodeInformation(value);
-      this.$emit('input', this.formItems);
+      this.$emit('input', NodeInfoDTOFromJSON(this.formItems));
+      this.$emit('select', this.formItems.host);
     }
     catch (e) {
       // input may be a custom node
@@ -223,7 +253,7 @@ export default class NetworkNodeSelectorTs extends Vue {
    */
   protected urlValidator(url: string): boolean {
     const reg = new RegExp(this.urlRegexp);
-    return !!url && url.length && reg.test(url);
+    return undefined !== url && url.length > 0 && reg.test(url);
   }
   /// end-region components methods
 }

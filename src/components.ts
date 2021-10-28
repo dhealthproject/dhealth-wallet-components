@@ -17,10 +17,6 @@ Vue.use(iView, { locale });
 Vue.use(infiniteScroll);
 /// end-region setup Vue
 
-/// region models
-export { NodeModel } from "./models/NodeModel";
-/// end-region models
-
 /// region services
 export { FilteringTypes } from "./types/FilteringTypes";
 export { SortingDirections } from "./types/SortingDirections";
@@ -29,15 +25,21 @@ export { TableField } from "./types/TableField";
 export { TableFilteringOptions } from "./types/TableFilteringOptions";
 export { TableSortingOptions } from "./types/TableSortingOptions";
 export { TableService } from "./services/TableService";
-export { NodeService } from "./services/NodeService";
-export { NetworkService } from "./services/NetworkService";
 /// end-region services
 
 /// region components
 // @ts-ignore
+import ButtonAdd from "./components/ButtonAdd/ButtonAdd.vue";
+// @ts-ignore
+import ButtonCopy from "./components/ButtonCopy/ButtonCopy.vue";
+// @ts-ignore
 import ButtonRefresh from "./components/ButtonRefresh/ButtonRefresh.vue";
 // @ts-ignore
+import ButtonRemove from "./components/ButtonRemove/ButtonRemove.vue";
+// @ts-ignore
 import IconButton from "./components/IconButton/IconButton.vue";
+// @ts-ignore
+import IconLoading from "./components/IconLoading/IconLoading.vue";
 // @ts-ignore
 import AmountDisplay from "./components/AmountDisplay/AmountDisplay.vue";
 // @ts-ignore
@@ -63,7 +65,10 @@ import NetworkNodeSelector from "./components/NetworkNodeSelector/NetworkNodeSel
 
 const components: { [s: string]: VueConstructor } = {
   AmountDisplay,
+  ButtonAdd,
+  ButtonCopy,
   ButtonRefresh,
+  ButtonRemove,
   ErrorTooltip,
   FormLabel,
   FormRow,
@@ -72,9 +77,10 @@ const components: { [s: string]: VueConstructor } = {
   GenericTableDisplay,
   GenericTableRow,
   IconButton,
+  IconLoading,
   NavigationLinks,
-  QRCode,
   NetworkNodeSelector,
+  QRCode,
 };
 
 export const registerComponents = (): { [s: string]: VueConstructor } => {
@@ -84,7 +90,10 @@ export const registerComponents = (): { [s: string]: VueConstructor } => {
 
 export {
   AmountDisplay,
+  ButtonAdd,
+  ButtonCopy,
   ButtonRefresh,
+  ButtonRemove,
   ErrorTooltip,
   FormLabel,
   FormRow,
@@ -93,8 +102,9 @@ export {
   GenericTableDisplay,
   GenericTableRow,
   IconButton,
+  IconLoading,
   NavigationLinks,
-  QRCode,
   NetworkNodeSelector,
+  QRCode,
 };
 /// end-region components

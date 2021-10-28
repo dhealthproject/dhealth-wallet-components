@@ -16,6 +16,23 @@
     font-size: 0.24rem;
 }
 
+// overwrite of iView AutoComplete
+/deep/.ivu-auto-complete {
+    background: @white;
+    border: 1px solid @borderColor;
+    div[tabindex] {
+        height: 100%;
+        .ivu-input-wrapper {
+            height: 100%;
+            input {
+                background: @white !important;
+                border: none;
+                height: 100%;
+            }
+        }
+    }
+}
+
 .emphasis {
     min-height: 0.9rem;
 }
@@ -29,7 +46,6 @@
 
 .publickey-input-container {
     background: #f2f2f2;
-    margin-top: 0.14rem;
 }
 
 .errormsg-container {
