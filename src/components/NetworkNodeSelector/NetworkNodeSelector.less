@@ -1,0 +1,66 @@
+/**
+ * This file is part of dHealth Wallet Components shared under LGPL-3.0
+ * Copyright (C) 2021 Using Blockchain Ltd, Reg No.: 12658136, United Kingdom
+ *
+ * @package     dHealth Wallet Components
+ * @author      Grégory Saive for Using Blockchain Ltd <greg@ubc.digital>
+ * @license     LGPL-3.0
+ */
+@import "../theme.less";
+
+/deep/.ivu-select-dropdown-list {
+    max-height: 3rem;
+}
+
+/deep/.ivu-auto-complete .ivu-icon-ios-close {
+    font-size: 0.24rem;
+}
+
+// overwrite of iView AutoComplete
+/deep/.ivu-auto-complete {
+    background: @white;
+    border: 1px solid @borderColor;
+    div[tabindex] {
+        height: 100%;
+        .ivu-input-wrapper {
+            height: 100%;
+            input {
+                background: @white !important;
+                border: none;
+                height: 100%;
+            }
+        }
+    }
+}
+
+.emphasis {
+    min-height: 0.9rem;
+}
+
+.custom-node-input-container {
+    padding-right: 0.14rem;
+    display: flex;
+    gap: 0.14rem;
+    align-items: center;
+}
+
+.publickey-input-container {
+    background: #f2f2f2;
+}
+
+.errormsg-container {
+    background: #d86767;
+    margin-top: 0.14rem;
+}
+
+.select-button {
+    border: none !important;
+    font-weight: bold;
+    padding: 0.04rem;
+    cursor: pointer;
+    background-color: transparent;
+    color: @secondary;
+}
+.clickable-input {
+    cursor: pointer;
+}
